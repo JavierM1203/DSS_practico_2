@@ -32,9 +32,11 @@ Se puede observar que independientemente de la contraseña que se ingrese se log
 ![Ingreso exitoso](images/Ingresoexitoso.png)
 
 Este código es vulnerable a SQL Injection porque concatena directamente las entradas del usuario (user y password) en la consulta SQL sin ninguna sanitización. 
-Al no estar sanitizadas, cuando se le ingresa: admin' -- en el campo de usuario y cualquier valor en el campo de contraseña, pasa la validación previa porque ambos campos contienen algún valor y la consulta SQL que se genera entonces se convierte en:
-SELECT COUNT(*) FROM PEOPLE WHERE USER_ID = 'admin' --' AND PASSWORD = '...'
-La parte -- que se encuentra luego del admin, comenta el resto de la consulta, evadiendo el control de la password y permitiendo el acceso.
+Al no estar sanitizadas, cuando se le ingresa: admin' -- en el campo de usuario y cualquier valor en el campo de contraseña, pasa la validación porque ambos campos contienen algún valor y la consulta SQL que se genera se convierte en:
+
+**SELECT COUNT(*) FROM PEOPLE WHERE USER_ID = 'admin' --'** AND PASSWORD = '...'
+
+Los guiones -- que se encuentran luego del 'admin', comentan el resto de la consulta, evadiendo el control de la password y permitiendo el acceso.
 
 Para mitigar esta vulnerabilidad, se debes utilizar sentencias preparadas (Prepared Statements), que aseguran que las entradas del usuario no se interpreten como parte del código SQL.
 
