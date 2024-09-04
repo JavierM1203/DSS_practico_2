@@ -40,14 +40,26 @@ Los guiones -- que se encuentran luego del 'admin', comentan el resto de la cons
 
 Para mitigar esta vulnerabilidad, se debes utilizar sentencias preparadas (Prepared Statements), que aseguran que las entradas del usuario no se interpreten como parte del código SQL.
 
-![codigo arreglado.](images/codigoarreglado.png)
+![codigo arreglado](images/codigoarreglado.png)
 
 ![no ingresa debido al control](images/noingresadebidoalcontrol.png)
 
 Se puede observar que luego del ajuste, cuando se intenta ingresar con el uso de la inyeccion, se visualiza un error, es decir, se controla exitosamente los datos ingresados.
 
 
-## Vulnerabilidad 3
+
+## Vulnerabilidad 3 – Improper Input Validation 
+Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
+Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
+
+![presionarGo](images/presionarGo.png)
+
+Se encontro que luego de ingresar, en la url se veia el numero del mismo, y cambiandolo se lograba acceder a la historia de otro usuario, lo cual no deberia tener permitido visualizar.
+
+![entrarAMiHistoria](images/entrarAMiHistoria.png)
+
+![entreAOtraHistoria](images/entreAOtraHistoria.png)
+
 
 ## Vulnerabilidad 4
 
