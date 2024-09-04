@@ -76,12 +76,17 @@ En la interfaz de administración (/AltoroJ/admin/login.jsp) se utiliza una clav
 Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12).
 
 ![contrasenaVista](images/contrasenaVista.png)
+
 Para mitigar dicho comportamiento:
+
 Se retiro la misma de ese archivo y se la guardo en el archivo app.properties.
+![app.properties](images/app.properties.png)
+
+Luego desde el login.jsp, se podria acceder a la contraseña cargando el archivo de app.properties.
 
 ![contrasena](images/contrasenaP.png)
 
-![app.properties](images/app.properties.png)
+
 
 
 ## Vulnerabilidad 7
