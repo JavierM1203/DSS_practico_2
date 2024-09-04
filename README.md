@@ -25,11 +25,11 @@ Existe una inyección SQL en la funcionalidad de login, lo que permite acceder a
 
 Se puede observar que independientemente de la contraseña que se ingrese se logra acceder al sistema:
 
-![admin login](images/admin login.png)
+![admin login](images/adminlogin.png)
 
 ![admin2](images/admin2.png)
 
-![Ingreso exitoso](images/Ingreso exitoso.png)
+![Ingreso exitoso](images/Ingresoexitoso.png)
 
 Este código es vulnerable a SQL Injection porque concatena directamente las entradas del usuario (user y password) en la consulta SQL sin ninguna sanitización. 
 Al no estar sanitizadas, cuando se le ingresa: admin' -- en el campo de usuario y cualquier valor en el campo de contraseña, pasa la validación previa porque ambos campos contienen algún valor y la consulta SQL que se genera entonces se convierte en:
@@ -38,9 +38,9 @@ La parte -- que se encuentra luego del admin, comenta el resto de la consulta, e
 
 Para mitigar esta vulnerabilidad, se debes utilizar sentencias preparadas (Prepared Statements), que aseguran que las entradas del usuario no se interpreten como parte del código SQL.
 
-![codigo arreglado.](images/codigo arreglado.png)
+![codigo arreglado.](images/codigoarreglado.png)
 
-![no ingresa debido al control](images/no ingresa debido al control.png)
+![no ingresa debido al control](images/noingresadebidoalcontrol.png)
 
 Se puede observar que luego del ajuste, cuando se intenta ingresar con el uso de la inyeccion, se visualiza un error, es decir, se controla exitosamente los datos ingresados.
 
