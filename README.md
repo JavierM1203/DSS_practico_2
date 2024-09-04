@@ -21,7 +21,7 @@ Luego de realizar los ajustes en el código, no se ejecuta el script ingresado d
 
 
 ## Vulnerabilidad 2  – SQL Injection
-Existe una inyección SQL en la funcionalidad de login, lo que permite acceder al sistema sin conocer la contraseña.
+Se puede realizar una inyección SQL en la funcionalidad de login, lo que permite acceder al sistema sin conocer la contraseña.
 
 Se puede observar que independientemente de la contraseña que se ingrese se logra acceder al sistema:
 
@@ -49,6 +49,7 @@ Se puede observar que luego del ajuste, cuando se intenta ingresar con el uso de
 
 
 ## Vulnerabilidad 3 – Improper Input Validation 
+
 Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
 Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
 
@@ -58,14 +59,30 @@ Se encontro que luego de ingresar, en la url se veia el numero del mismo, y camb
 
 ![entrarAMiHistoria](images/entrarAMiHistoria.png)
 
+
 ![entreAOtraHistoria](images/entreAOtraHistoria.png)
 
 
-## Vulnerabilidad 4
+## Vulnerabilidad 4  – OS Command Injection
+
+Se puede realizar una inyección de comando en el parámetro content de la página index.jsp.
+![inyeccioncomando](images/inyeccioncomando.png)
 
 ## Vulnerabilidad 5
 
-## Vulnerabilidad 6
+## Vulnerabilidad 6 – Use of Hard-coded Credentials 
+
+En la interfaz de administración (/AltoroJ/admin/login.jsp) se utiliza una clave codificada directamente en el código fuente.
+Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12).
+
+![contrasenaVista](images/contrasenaVista.png)
+Para mitigar dicho comportamiento:
+Se retiro la misma de ese archivo y se la guardo en el archivo app.properties.
+
+![contrasena](images/contrasenaP.png)
+
+![app.properties](images/app.properties.png)
+
 
 ## Vulnerabilidad 7
 
