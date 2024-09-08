@@ -50,7 +50,21 @@ Se puede observar que luego del ajuste, cuando se intenta ingresar con el uso de
 
 ## Vulnerabilidad 3 – Improper Input Validation 
 
+Al consultar el historial de una cuenta, el número de cuenta puede ser modificado desde la URL. Esto permite que el usuario pueda ingresar caractéres no válidos como letras o símbolos.
 
+Como no se valida que el dato ingresado sea un número, se muestra el mensaje de error arrojado por la excepción de Java al intentar parsear un string a long.
+
+![v3_muestra](images/v3_muestra.png)
+
+![v3_error](images/v3_error.png)
+
+Para mitigar el problema, se puede validar que el dato de entrada sea numérico antes de procesarlo en el archivo balance.jsp. En caso de que no lo sea, el usuario será redirigido a una página no encontrada.
+
+![v3_mitigada_codigo](images/v3_mitigada_codigo.png)
+
+![metodo_is_numeric](images/metodo_is_numeric.png)
+
+![v3_mitigada](images/v3_mitigada.png)
 
 ## Vulnerabilidad 4  – OS Command Injection
 
@@ -75,6 +89,7 @@ Ademas desde "/AltoroJ/src/com/ibm/security/appscan/altoromutual/servlet/AdminLo
 **Para mitigar dicho comportamiento:**
 
 Se retiro la misma del archivo login.jsp, y se la guardo en el archivo app.properties.
+
 ![app.properties](images/app.properties.png)
 
 Luego desde el AdminLoginServlet.java, se llama a la contraseña cargando el archivo de app.properties.
