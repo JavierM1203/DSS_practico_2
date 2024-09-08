@@ -112,5 +112,12 @@ Se encontro que luego de ingresar, en la url se veia el numero del mismo, y camb
 
 ![entreAOtraHistoria](images/entreAOtraHistoria.png)
 
+Para mitigar el problema, se puede modificar el código en el archivo balance.jsp para validar que el número de cuenta ingresado coincida con alguno de los números de cuenta del usuario. En caso de que no coincida, el usuario es redirigido a una página no encontrada.
+
+![v7_codigo_arreglado](images/v7_codigo_arreglado.png)
+
+![metodo_lookup_account](images/v7_lookup_account.png)
+
+![v7_arreglado_muestra](images/v7_arreglado_muestra.png)
 
 ## Vulnerabilidad 8
