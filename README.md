@@ -8,7 +8,7 @@ Existe un cross site scripting (XSS) en el parámetro query de la url search.jsp
 
 ![image1](images/image1.png)
 
-Esto se debe a que los datos de entrada en el parámetro de entrada no son neutralizados antes de ser utilizados. Para mitigar este problema, se puede usar el método ServletUtil.sanitizeHtmlWithRegex() sobre los datos de entrada antes de utilizarlos para realizar operaciones de búsqueda.
+Esto se debe a que los datos en el parámetro de entrada no son neutralizados antes de ser utilizados. Para mitigar este problema, se puede usar el método ServletUtil.sanitizeHtmlWithRegex() sobre los datos de entrada antes de utilizarlos para realizar operaciones de búsqueda.
 
 ![image2](images/image2.png)
 
@@ -50,17 +50,6 @@ Se puede observar que luego del ajuste, cuando se intenta ingresar con el uso de
 
 ## Vulnerabilidad 3 – Improper Input Validation 
 
-Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
-Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
-
-![presionarGo](images/presionarGo.png)
-
-Se encontro que luego de ingresar, en la url se veia el numero del mismo, y cambiandolo se lograba acceder a la historia de otro usuario, lo cual no deberia tener permitido visualizar.
-
-![entrarAMiHistoria](images/entrarAMiHistoria.png)
-
-
-![entreAOtraHistoria](images/entreAOtraHistoria.png)
 
 
 ## Vulnerabilidad 4  – OS Command Injection
@@ -89,6 +78,19 @@ Luego desde el login.jsp, se podria acceder a la contraseña cargando el archivo
 
 
 
-## Vulnerabilidad 7
+## Vulnerabilidad 7 – Missing Authorization
+
+Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
+Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
+
+![presionarGo](images/presionarGo.png)
+
+Se encontro que luego de ingresar, en la url se veia el numero del mismo, y cambiandolo se lograba acceder a la historia de otro usuario, lo cual no deberia tener permitido visualizar.
+
+![entrarAMiHistoria](images/entrarAMiHistoria.png)
+
+
+![entreAOtraHistoria](images/entreAOtraHistoria.png)
+
 
 ## Vulnerabilidad 8
