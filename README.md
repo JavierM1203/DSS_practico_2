@@ -74,7 +74,7 @@ Ademas desde "/AltoroJ/src/com/ibm/security/appscan/altoromutual/servlet/AdminLo
 
 **Para mitigar dicho comportamiento:**
 
-Se retiro la misma de ese archivo y se la guardo en el archivo app.properties.
+Se retiro la misma del archivo login.jsp, y se la guardo en el archivo app.properties.
 ![app.properties](images/app.properties.png)
 
 Luego desde el AdminLoginServlet.java, se llama a la contraseña cargando el archivo de app.properties.
