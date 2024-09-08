@@ -62,19 +62,22 @@ Se puede realizar una inyección de comando en el parámetro content de la pági
 ## Vulnerabilidad 6 – Use of Hard-coded Credentials 
 
 En la interfaz de administración (/AltoroJ/admin/login.jsp) se utiliza una clave codificada directamente en el código fuente.
-Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12).
 
 ![contrasenaVista](images/contrasenaVista.png)
+
+Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12).
+
+![contrasenaVisible](images/contrasenaVisible.png)
+
 
 Para mitigar dicho comportamiento:
 
 Se retiro la misma de ese archivo y se la guardo en el archivo app.properties.
 ![app.properties](images/app.properties.png)
 
-Luego desde el login.jsp, se podria acceder a la contraseña cargando el archivo de app.properties.
+Luego desde el AdminLoginServlet.java, se llama a la contraseña cargando el archivo de app.properties.
 
-![contrasena](images/contrasenaP.png)
-
+![codigoSinHardcode](images/codigoSinHardcode.png)
 
 
 
