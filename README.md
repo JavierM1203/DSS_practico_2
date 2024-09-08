@@ -80,7 +80,7 @@ Luego desde el login.jsp, se podria acceder a la contraseña cargando el archivo
 
 ## Vulnerabilidad 7 – Missing Authorization
 
-Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
+Se encontro que existe una vulnerabilidad de Missing Authorization, al visualizar las historias.
 Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
 
 ![presionarGo](images/presionarGo.png)
