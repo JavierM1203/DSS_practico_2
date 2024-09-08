@@ -65,12 +65,14 @@ En la interfaz de administración (/AltoroJ/admin/login.jsp) se utiliza una clav
 
 ![contrasenaVista](images/contrasenaVista.png)
 
-Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12).
+Esto implica una vulnerabilidad porque un atacante puede revisar el codigo fuente por ejemplo a traves de las herramientas de desarrollo (f12), y obtener la password.
 
 ![contrasenaVisible](images/contrasenaVisible.png)
+Ademas desde "/AltoroJ/src/com/ibm/security/appscan/altoromutual/servlet/AdminLoginServlet.java", se utiliza la password hardcodeada.
 
+![hardcode](images/hardcode.png)
 
-Para mitigar dicho comportamiento:
+**Para mitigar dicho comportamiento:**
 
 Se retiro la misma de ese archivo y se la guardo en el archivo app.properties.
 ![app.properties](images/app.properties.png)
@@ -83,7 +85,7 @@ Luego desde el AdminLoginServlet.java, se llama a la contraseña cargando el arc
 
 ## Vulnerabilidad 7 – Missing Authorization
 
-Se encontro que existe una vulnerabilidad de Improper Input Validation, al visualizar las historias.
+Se encontro que existe una vulnerabilidad de Missing Authorization, al visualizar las historias.
 Se ingreso como el usuario "jsmith", el cual tenia 3 opciones para seleccionar: 800003, 800002 o 4539082039396288, para visualizar la historia.
 
 ![presionarGo](images/presionarGo.png)
