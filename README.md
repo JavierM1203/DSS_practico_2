@@ -69,7 +69,28 @@ Para mitigar el problema, se puede validar que el dato de entrada sea numérico 
 ## Vulnerabilidad 4  – OS Command Injection
 
 Se puede realizar una inyección de comando en el parámetro content de la página index.jsp.
+
 ![inyeccioncomando](images/inyeccioncomando.png)
+
+El comando touch se usa para crear archivos vacíos en el sistema de archivos. En este ejemplo, el atacante creó un archivo llamado algo en la carpeta /home/user/.
+
+El comando cat es utilizado para mostrar el contenido de un archivo en la terminal. En este caso, el atacante pidió ver el archivo /etc/passwd, el cual contiene información sobre las cuentas de usuario del sistema.
+
+Para mitigar este problema, se debe sanitizar el paramétro content y evitar el uso de comandos del sistema operativo, utilizando APIs de Java para manejar archivos directamente.
+
+![v4_fixed_code_1](images/v4_fixed_code_1.png)
+
+![v4_fixed_code_2](images/v4_fixed_code_2.png)
+
+Al realizar los ajustes en el código, utilizamos una expresión regular para asegurarnos de que solo se acepten nombres de archivos válidos y evitar la inyección de comandos maliciosos.
+
+Además, evitamos utilizar Runtime.exec(), usando clases de Java como FileReader y BufferedReader para leer los archivos directamente, eliminando la necesidad de ejecutar comandos del sistema operativo.
+
+Por último, tambien manejamos las excepciones. Si el archivo no existe o no se puede leer de forma segura, el usuario es redirigdo a una página no encontrada.
+
+Ahora, al ingresar de nuevo los comandos en la url, estos no se ejecutan y el usuario es redirigido.
+
+![v4_fixed](images/v4_fixed.png)
 
 ## Vulnerabilidad 5
 
