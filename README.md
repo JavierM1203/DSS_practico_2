@@ -159,4 +159,21 @@ Para mitigar el problema, se puede modificar el código en el archivo balance.js
 
 ![v7_arreglado_muestra](images/v7_arreglado_muestra.png)
 
-## Vulnerabilidad 8
+## Vulnerabilidad 8 – Missing Authentication for Critical Function
+
+La URL `http://localhost:8080/AltoroJ/api/account/{accountNo}` permite conocer el saldo de cualquier cuenta independientemente del usuario que este realizando el pedido, siempre y cuando el token sea válido. Por ejemplo, al realizar un pedido a este endpoint utilizando el token generado para el usuario jsmith, pero ingresando un número de cuenta que no pertenezca a este usuario, se permite visualizar la información de la cuenta.
+
+![v8_unauthorized](images/v8_unauthorized.png)
+
+Para mitigar este problema, buscamos al usuario asociado al token. Si el usuario no existe, o si el número de cuenta consultado no coincide con alguno de los números de cuenta del usuario, se devuelve un mensaje de error.
+
+![v8_code_fixed](images/v8_code_fixed.png)
+
+![v8_get_user_method](images/v8_get_user_method.png)
+
+Luego de realizar los ajustes, se muestra un mensaje de error si intentamos consultar los datos de una cuenta que no pertenece al usuario jsmith.
+
+![v8_fixed](images/v8_fixed.png)
+
+
+
