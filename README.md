@@ -93,6 +93,24 @@ Ahora, al ingresar de nuevo los comandos en la url, estos no se ejecutan y el us
 ![v4_fixed](images/v4_fixed.png)
 
 ## Vulnerabilidad 5
+Se puede realizar una vulnerabilidad de Path Traversal en el parámetro content de la página index.jsp
+
+![foto1-5](images/foto1-5.png)
+
+El atacante está explotando una vulnerabilidad de Path Traversal en la aplicación web para acceder al archivo sensible /etc/passwd del servidor. Esto permite leer información del sistema de archivos que normalmente debería estar protegida. El archivo /etc/passwd contiene datos sobre las cuentas de usuario del sistema, como nombres de usuario y otros metadatos.
+
+La mitigación de la vulnerabilidad de Path Traversal se basa en validar el parámetro content, asegurando que no contenga secuencias como ../ y que termine en .htm. Si no es válido, se redirige a un archivo por defecto, evitando el acceso no autorizado.
+
+Para manejar los archivos de forma segura, se reemplaza la ejecución de comandos del sistema por el uso de BufferedReader y FileReader, lo que elimina la posibilidad de inyección de comandos y garantiza una lectura controlada.
+
+Finalmente, se limita el acceso a archivos a un directorio específico con getRealPath("/static"), asegurando que solo se acceda a los archivos permitidos, mejorando así la seguridad de la aplicación.
+
+![foto2-5](images/foto2-5.jpg)
+
+Ahora, al ingresar de nuevo la ruta que intentaba explotar la vulnerabilidad de Path Traversal en la URL, los comandos ya no se ejecutan. En su lugar, el usuario es redirigido a una página predeterminada, lo que previene el acceso no autorizado a archivos sensibles del sistema.
+
+![foto3-5](images/foto3-5.jpg)
+
 
 ## Vulnerabilidad 6 – Use of Hard-coded Credentials 
 
