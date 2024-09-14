@@ -92,7 +92,7 @@ Ahora, al ingresar de nuevo los comandos en la url, estos no se ejecutan y el us
 
 ![v4_fixed](images/v4_fixed.png)
 
-## Vulnerabilidad 5
+## Vulnerabilidad 5 – Path Traversal
 Se puede realizar una vulnerabilidad de Path Traversal en el parámetro content de la página index.jsp
 
 ![foto1-5](images/foto1-5.png)
